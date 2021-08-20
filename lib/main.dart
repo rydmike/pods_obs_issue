@@ -52,6 +52,7 @@ class MyHomePage extends ConsumerWidget {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
+                debugPrint('Set to ZERO');
                 ref.read(counterProvider).state = 0;
               },
               child: Text('Reset to ZERO'),
