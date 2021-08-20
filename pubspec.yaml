@@ -1,5 +1,5 @@
 name: pods_obs_issue
-description: Riverpod state provider observer FAIL
+description: Riverpod state provider observer issue
 publish_to: 'none'
 version: 1.0.0+1
 environment:
@@ -10,7 +10,13 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.3
 
-  flutter_riverpod: ^1.0.0-dev.6
+  flutter_riverpod: ^1.0.0-dev.7
+  # flutter_riverpod:
+  #  path: ../../_mr/river_pod/packages/flutter_riverpod
+    # git:
+      # ref: master
+      # url: git://github.com/rrousselGit/river_pod.git
+      # path: packages/flutter_riverpod
 
 dev_dependencies:
   flutter_test:

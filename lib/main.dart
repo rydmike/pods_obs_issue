@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Riverpod Obs 1.0.0 Issue'),
+      home: MyHomePage(title: 'Riverpod 1.0.0-dev.7 Issue'),
     );
   }
 }
@@ -49,6 +49,13 @@ class MyHomePage extends ConsumerWidget {
               '${ref.watch(counterProvider).state}',
               style: Theme.of(context).textTheme.headline4,
             ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                ref.read(counterProvider).state = 0;
+              },
+              child: Text('Reset to ZERO'),
+            )
           ],
         ),
       ),
@@ -68,12 +75,11 @@ class ProvidersObserver extends ProviderObserver {
   @override
   void didUpdateProvider(ProviderBase<dynamic> provider, Object? previousValue,
       Object? newValue, ProviderContainer container) {
-    debugPrint('Provider observe: ${provider.runtimeType} value: $newValue');
-    if (newValue is StateController) {
-      // If it is a StateProviders we will print its state too.
-      debugPrint(
-          'Provider is StateController: ${provider.name ?? provider.runtimeType} '
-          'value: ${newValue.state}');
+    if (newValue is StateController && previousValue is StateController) {
+      debugPrint('Provider is StateController: '
+          '${provider.name ?? provider.runtimeType} \n'
+          'new value: ${newValue.state}\n'
+          'previous value: ${previousValue.state}');
     }
   }
 }
